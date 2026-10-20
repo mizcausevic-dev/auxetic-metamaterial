@@ -1,0 +1,23 @@
+{
+  "name": "auxetic-metamaterial",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Interactive 34-second explainer of a re-entrant honeycomb auxetic lattice with illustrative kinematics.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 4173",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "three": "^0.170.0"
+  },
+  "devDependencies": {
+    "@types/three": "^0.170.0",
+    "typescript": "^5.6.3",
+    "vite": "^6.0.7",
+    "vitest": "^3.0.5"
+  }
+}

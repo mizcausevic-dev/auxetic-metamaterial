@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Re-entrant honeycomb · illustrative auxetic mechanism</title>
+    <meta
+      name="description"
+      content="A 34-second interactive explanation of how a re-entrant honeycomb widens when stretched, using illustrative kinematics and an effective secant Poisson ratio."
+    />
+    <link rel="icon" href="./favicon.ico" sizes="16x16" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+  <body>
+    <div class="app" id="app">
+      <header class="top">
+        <div>
+          <p class="eyebrow">Illustrative kinematics · not a material test</p>
+          <h1>Re-entrant honeycomb</h1>
+        </div>
+        <p class="lede">
+          A continuous polymer lattice opens when the top grip moves up. The coupon gets taller and wider.
+          The negative ratio belongs to the architecture, not to the polymer.
+        </p>
+      </header>
+
+      <div class="stage-wrap">
+        <div class="stage" id="stage">
+          <canvas id="gl" aria-hidden="true"></canvas>
+          <canvas id="fallback" class="fallback" hidden aria-hidden="true"></canvas>
+          <div id="anchors" class="anchors"></div>
+          <button id="play-overlay" class="play-overlay" type="button">
+            <span class="play-kicker">34.000 s · 30 fps reference</span>
+            <span class="play-title">Play explanation</span>
+            <span class="play-note">Sound starts with playback. Original score, no samples.</span>
+          </button>
+          <aside id="comparison" class="comparison" hidden>
+            <p class="comparison-kicker">Schematic comparison</p>
+            <p class="comparison-note">Not the live specimen. Equal axial strain.</p>
+            <canvas id="comparison-canvas" width="640" height="320" aria-label="Schematic comparison of an auxetic re-entrant cell and a conventional honeycomb at equal axial strain"></canvas>
+          </aside>
+          <p id="status" class="status" role="status">Preparing the lattice.</p>
+        </div>
+
+        <aside class="panel" aria-label="Explanation">
+          <p id="shot-kicker" class="kicker"></p>
+          <h2 id="shot-title"></h2>
+          <ul id="shot-lines"></ul>
+          <div id="live" class="visually-hidden" aria-live="polite"></div>
+
+          <dl class="readout" aria-label="Gauge measurements from tracked material points">
+            <div><dt>H0</dt><dd id="h0">—</dd></div>
+            <div><dt>H</dt><dd id="h">—</dd></div>
+            <div><dt>ε<sub>y</sub></dt><dd id="ey">—</dd></div>
+            <div><dt>W0</dt><dd id="w0">—</dd></div>
+            <div><dt>W</dt><dd id="w">—</dd></div>
+            <div><dt>ε<sub>x</sub></dt><dd id="ex">—</dd></div>
+            <div class="wide"><dt>ν<sub>sec</sub></dt><dd id="nu">—</dd></div>
+          </dl>
+          <p class="fine">Illustrative effective secant ratio. Model units. Withheld near zero axial strain.</p>
+
+          <ul class="legend">
+            <li><span class="swatch amber"></span>Amber: tensile grip motion</li>
+            <li><span class="swatch cyan"></span>Cyan: illustrative flexure overlay</li>
+            <li><span class="swatch mint"></span>Mint: transverse expansion</li>
+            <li><span class="swatch gray"></span>Gray: polymer lattice</li>
+          </ul>
+
+          <p class="fine">Laterally accommodating attachments are an illustrative fixture. The lattice does not slide through a clamp.</p>
+          <p class="fine">Deformation amplified for illustration.</p>
+          <p class="fine">Idealized elastic response · illustrative kinematics.</p>
+          <p class="fine">Time-compressed sequence. Not a measured loading rate. Not finite-element analysis.</p>
+        </aside>
+      </div>
+
+      <footer class="transport" aria-label="Playback">
+        <div class="transport-row">
+          <button id="play" type="button" aria-label="Play" aria-keyshortcuts="Space">Play</button>
+          <button id="replay" type="button" aria-label="Replay from the start" aria-keyshortcuts="R">Replay</button>
+          <button id="mute" type="button" aria-pressed="false" aria-label="Mute audio" aria-keyshortcuts="M">Mute</button>
+          <button id="fullscreen" type="button" aria-label="Enter fullscreen" aria-keyshortcuts="F">Full screen</button>
+          <button id="reduced" type="button" aria-pressed="false" aria-label="Reduced motion inspection">Reduced motion</button>
+        </div>
+        <div class="timeline-row">
+          <label class="time" for="timeline"><span id="clock">0:00.0</span><span class="time-sep">/</span><span>0:34.0</span></label>
+          <input
+            id="timeline"
+            type="range"
+            min="0"
+            max="34"
+            step="0.001"
+            value="0"
+            aria-label="Animation timeline"
+            aria-valuemin="0"
+            aria-valuemax="34"
+            aria-valuenow="0"
+            aria-valuetext="0 seconds of 34"
+          />
+        </div>
+        <div class="chapters" role="group" aria-label="Shots">
+          <button type="button" data-shot="0">1 Coupon</button>
+          <button type="button" data-shot="5">2 Cell</button>
+          <button type="button" data-shot="10">3 Loading</button>
+          <button type="button" data-shot="17">4 Gauge</button>
+          <button type="button" data-shot="25">5 Unload</button>
+        </div>
+        <div class="levels">
+          <label>Music <input id="music" type="range" min="0" max="100" value="72" aria-label="Music level" /></label>
+          <label>Effects <input id="sfx" type="range" min="0" max="100" value="78" aria-label="Effects level" /></label>
+        </div>
+      </footer>
+    </div>
+    <noscript>
+      <div class="noscript">
+        <h1>Re-entrant honeycomb</h1>
+        <p>
+          This page needs JavaScript to run the 34-second interactive model. The mechanism is a continuous
+          re-entrant honeycomb: inclined ribs rotate and bend as the top grip moves up, so the central gauge
+          gets taller and wider. That negative effective ratio is a property of the architecture. The polymer
+          itself is not auxetic. The sequence is illustrative kinematics, not a measured material test.
+        </p>
+      </div>
+    </noscript>
+    <script type="module" src="./src/main.ts"></script>
+  </body>
+</html>
