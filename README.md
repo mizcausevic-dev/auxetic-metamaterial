@@ -46,4 +46,4 @@ About: Interactive 34-second explainer of a re-entrant honeycomb auxetic lattice
 
 Topics: `auxetic`, `metamaterial`, `re-entrant-honeycomb`, `threejs`, `vite`, `mechanics`, `visualization`, `poisson-ratio`, `typescript`
 
-No repository was attached to the build environment, so this copy was not published.
+`.github/workflows/pages.yml` builds `dist/` and deploys GitHub Pages from `main`. The site uses relative asset paths (`base: "./"`), so it loads from a project-pages URL.
